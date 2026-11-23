@@ -6,13 +6,14 @@ Summary:	LLM inference in C/C++
 Summary(pl.UTF-8):	Wnioskowanie z użyciem LLM w C/C++
 Name:		llama.cpp
 Version:	1.0.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/ggml-org/llama.cpp/releases
 Source0:	https://github.com/ggml-org/llama.cpp/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	688562e96cae0d422272b97afd9ced5f
 Patch0:		%{name}-x32.patch
+Patch1:		%{name}-32bit.patch
 URL:		https://github.com/ggml-org/llama.cpp
 BuildRequires:	cmake >= 3.14
 BuildRequires:	ggml-devel >= 1.0.0
@@ -59,6 +60,7 @@ Pliki nagłówkowe bibliotek LLaMA.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %cmake -B build \
